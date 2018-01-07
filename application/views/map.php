@@ -8,36 +8,7 @@
     			center: {lat: -22.1276, lng: -51.3856}
     		});
 
-            var script = document.createElement('script');
-            script.src = 'Marcacao/pegaMarcacoes';
-            document.getElementsByTagName('head')[0].appendChild(script);
-
-            window.callback = function(results) {
-              for (var i = 0; i < results.marcacoes.length; i++) {
-
-                var latLng = new google.maps.LatLng(results.marcacoes[i].lat, results.marcacoes[i].long);
-                placeMarker(map,latLng,results.marcacoes[i].nome_biblio);
-            };
-
-            function placeMarker(map, location, nome) {
-                var marker = new google.maps.Marker({
-                  position: location,
-                  map: map,
-                  nome: nome
-              });
-                var infowindow = new google.maps.InfoWindow({
-                  content: 'Nome: ' + marker.nome
-              });
-
-
-                google.maps.event.addListener(marker, "click", function(event) {
-                  infowindow.open(map,marker);
-              });
-
-            }
-
-
-        }
+            
     }
 
     $("#ver").click(function(){
@@ -77,7 +48,7 @@ function createMarker(latLng) {
     });
 }
 
-// Função que actualiza as caixas de texto no topo da página
+// Função que atualiza as caixas de texto no topo da página
 function getCoords(lat, lng) {
     $("#latitude").val(lat);
     $("#longitude").val(lng);
