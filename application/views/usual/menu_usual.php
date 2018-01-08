@@ -8,7 +8,7 @@
 
     <div class="nav navbar-nav">
       <li><a onclick="document.getElementById('modalColecao').style.display='block'" style="width:auto;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Sugerir Coleção</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Sugerir Marcação</a></li>
+      <li><a href="<?= base_url('usual/nova_marcacao')?>"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Sugerir Marcação</a></li>
       <li><a href="<?=base_url('usual/listar_colecoes')?>"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Escolher Coleção</a></li>
     </div>
     

@@ -92,6 +92,25 @@ class Usual extends CI_Controller {
 		$this->load->view('html-footer');
 	}
 
+	public function adicionar_marcacao(){
+		$this->load->model('colecao_model','colmodel');
+		$this->load->model('atributo_model','atrimodel');
+		$this->load->model('marcacoes_model','marcmodel');
+
+		$nome_col = $this->colmodel->get_nome_colecao($this->input->post('colecao'));
+		$dados['atributos'] = $this->atrimodel->listar($this->input->post('colecao'));
+		
+		foreach ($dados['atributos'] as $atributo) {
+			$marcacao[$atributo->atri_nome] = $this->input->post($atributo->atri_nome);
+		}
+		$marcacao['lat'] = $this->input->post('lat');
+		$marcacao['long'] = $this->input->post('long');
+		$marcacao['id_colecao'] = $this->input->post('colecao');
+
+		$this->marcmodel->inserir('marcacao_'.$nome_col[0]->col_nome,$marcacao);
+		redirect(base_url('usual/logado'));
+	}
+
 	public function exibir_marcacoes($col_id){
 		$this->load->model('colecao_model','colmodel');
 		$this->load->model('atributo_model','atrimodel');
@@ -105,6 +124,27 @@ class Usual extends CI_Controller {
 		$this->load->view('usual/menu_usual');
 		$this->load->view("mapa_marcacoes",array("marcacoes"=>$marcacoes));
 		$this->load->view('script');
+		$this->load->view('html-footer');
+	}
+
+	public function nova_marcacao(){
+		$this->load->model('colecao_model','modelcol');
+		$dados['colecoes'] = $this->modelcol->listar_aprovadas();
+
+		$this->load->view('html-header');
+		$this->load->view('usual/menu_usual');
+		$this->load->view('usual/listar_colecoes_nova_marcacao',$dados);
+		$this->load->view('html-footer');
+	}
+
+	public function criar_marcacao($col_id){
+		$this->load->model('atributo_model','atrimodel');
+		$atributos['atributos'] = $this->atrimodel->listar($col_id);
+		$atributos['colecao'] = $col_id;
+
+		$this->load->view('html-header');
+		$this->load->view('usual/menu_usual');
+		$this->load->view('usual/nova_marcacao',array("atributos"=>$atributos));
 		$this->load->view('html-footer');
 	}
 }

@@ -1,10 +1,15 @@
-<form action="<?php base_url('') ?>">
-	<input type="text" name="nome" placeholder="Nome">
-	<input type="submit" name="" class="btn btn-primary">
+<form action="<?= base_url('usual/adicionar_marcacao') ?>" method="post">
+	<div id="div_atributos">
+		
+	</div>
+	<div>
+		<input type="submit" name="" class="btn btn-primary">
+	</div>
 
-
-	<input type="text" name="lat" id="lat">
-	<input type="text" name="long" id="long">
+	<input type="hidden" name="lat" id="lat">
+	<input type="hidden" name="long" id="long">
+	<input type="hidden" name="colecao" id="colecao" value="0">
+	<input type="hidden" name="num_atri" id="num_atri" value="0">
 </form>
 <input type="text" id="endereco" placeholder="Endereço">
 <button id="ver">Buscar</button>
@@ -18,6 +23,46 @@
 </style>
 
 <script>
+
+$(document).ready(function(){
+	var valores = JSON.parse('<?=json_encode($atributos)?>');
+	var div_atributos = document.getElementById("div_atributos");
+	var i;
+	for(i = 0; i < valores.atributos.length; i++){
+		var tipo;
+		var type;
+		switch (valores.atributos[i].atri_tipo) {
+			case 0:
+			tipo = 'INT';
+			type = '"number"';
+			break;
+
+			case 1:
+			tipo = 'VARCHAR[ ]';
+			type = '"text"';
+			break;
+
+			case 2:
+			tipo = 'BOOLEAN';
+			type = '"text"';
+			break;
+
+			case 3:
+			tipo = 'FLOAT';
+			type = '"number"';
+			break;
+
+			case 4:
+			tipo = 'BLOB';
+			break;
+		}
+
+		$(div_atributos).append('<br><label>'+valores.atributos[i].atri_nome+'</label><br><input type='+type+' class="form-control" name='+valores.atributos[i].atri_nome+' />');
+	}
+	 document.getElementById("colecao").value = valores.colecao;
+	 document.getElementById("num_atri").value = valores.atributos.length;
+});
+	
 	var marker;
 	function initMap() {
 		var sp = {lat: -22.029374, lng: -48.212062};
