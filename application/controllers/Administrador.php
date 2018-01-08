@@ -62,6 +62,18 @@ class Administrador extends CI_Controller {
 		}
 	}
 
+	function sair(){
+		$data = array(
+			'id',
+			'nome',
+			'email',
+			'logado'		
+		);
+
+		$this->session->unset_userdata($data);
+		redirect(base_url());
+	}
+
 	function logado(){
 		$this->load->view('html-header');
 		$this->load->view('administrador/menu_adm');
@@ -111,5 +123,31 @@ class Administrador extends CI_Controller {
 		$resultado = array('col_aprovada' => FALSE);
 
 		$this->colemodel->alterar_aprovacao($resultado,$this->session->userdata('colecao'));
+	}
+
+	function listar_colecoes(){
+		$this->load->model('colecao_model','modelcol');
+		$dados['colecoes'] = $this->modelcol->listar_aprovadas();
+
+		$this->load->view('html-header');
+		$this->load->view('administrador/menu_adm');
+		$this->load->view('administrador/visualizar_colecoes',$dados);
+		$this->load->view('html-footer');
+	}
+
+	public function exibir_marcacoes($col_id){
+		$this->load->model('colecao_model','colmodel');
+		$this->load->model('atributo_model','atrimodel');
+		$this->load->model('marcacoes_model','marcmodel');
+
+		$nome_col = $this->colmodel->get_nome_colecao($col_id);
+		$marcacoes['atributos'] = $this->atrimodel->listar($col_id);
+		$marcacoes['valores'] = $this->marcmodel->get_Nome('marcacao_'.$nome_col[0]->col_nome);
+
+		$this->load->view('html-header');
+		$this->load->view('administrador/menu_adm');
+		$this->load->view("mapa_marcacoes",array("marcacoes"=>$marcacoes));
+		$this->load->view('script');
+		$this->load->view('html-footer');
 	}
 }

@@ -37,8 +37,6 @@ class Colecao extends CI_Controller{
 
 			$this->session->set_userdata($newdata);
 
-			//$this->session->set_flashdata('colecao',$aux[0]['col_id']);
-
 			redirect(base_url('colecao/area_novos_atributos'));
 		}
 		else{
@@ -52,6 +50,13 @@ class Colecao extends CI_Controller{
 		$this->load->view('html-footer');
 	}
 
-	
+	function listar_colecoes(){
+		$dados['colecoes'] = $this->colemodel->listar_aprovadas();
+
+		$this->load->view('html-header');
+		$this->load->view('menu_home');
+		$this->load->view('listar_colecoes',$dados);
+		$this->load->view('html-footer');
+	}
 }
 

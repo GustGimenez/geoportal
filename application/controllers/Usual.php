@@ -88,7 +88,23 @@ class Usual extends CI_Controller {
 
 		$this->load->view('html-header');
 		$this->load->view('usual/menu_usual');
-		$this->load->view('listar_colecoes',$dados);
+		$this->load->view('usual/listar_colecoes',$dados);
+		$this->load->view('html-footer');
+	}
+
+	public function exibir_marcacoes($col_id){
+		$this->load->model('colecao_model','colmodel');
+		$this->load->model('atributo_model','atrimodel');
+		$this->load->model('marcacoes_model','marcmodel');
+
+		$nome_col = $this->colmodel->get_nome_colecao($col_id);
+		$marcacoes['atributos'] = $this->atrimodel->listar($col_id);
+		$marcacoes['valores'] = $this->marcmodel->get_Nome('marcacao_'.$nome_col[0]->col_nome);
+
+		$this->load->view('html-header');
+		$this->load->view('usual/menu_usual');
+		$this->load->view("mapa_marcacoes",array("marcacoes"=>$marcacoes));
+		$this->load->view('script');
 		$this->load->view('html-footer');
 	}
 }

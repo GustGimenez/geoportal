@@ -8,7 +8,7 @@
 
     <div class="nav navbar-nav">
       <li><a href="<?= base_url('administrador/listar_avaliacao')?>"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Avaliar Coleção</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Escolher Coleção</a></li>
+      <li><a href="<?= base_url('administrador/listar_colecoes')?>"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Escolher Coleção</a></li>
     </div>
     
     <ul class="nav navbar-nav navbar-right">

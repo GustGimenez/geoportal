@@ -22,7 +22,7 @@ class Marcacao extends CI_Controller{
 		$marcacoes['valores'] = $this->marcmodel->get_Nome('marcacao_'.$nome_col[0]->col_nome);
 
 		$this->load->view('html-header');
-		$this->load->view('usual/menu_usual');
+		$this->load->view('menu_home');
 		$this->load->view("mapa_marcacoes",array("marcacoes"=>$marcacoes));
 		$this->load->view('script');
 		$this->load->view('html-footer');

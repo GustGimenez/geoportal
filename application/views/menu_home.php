@@ -15,7 +15,7 @@
     </div>
     <ul class="nav navbar-nav">
       <li class=""><a href="<?= base_url()?>"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
-      <li class=""><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Escolher Coleção</a></li>
+      <li class=""><a href="<?= base_url('colecao/listar_colecoes')?>"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Escolher Coleção</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="<?=base_url('usual/novo_usual')?>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Cadastrar</a></li>
