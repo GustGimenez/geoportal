@@ -9,4 +9,8 @@ class Marcacoes_model extends CI_Model{
 	public function get_Nome($nome){
 		return $this->db->get($nome)->result();
 	}
+
+	public function inserir($nome_tabela,$marcacao){
+		$this->db->insert($nome_tabela,$marcacao);
+	}
 }
