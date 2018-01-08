@@ -8,7 +8,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">  
-      <img class="imagem" src="../imagens/icone.png">
+      <img class="imagem" src="http://localhost/geoportal/imagens/icone.png">
     </div>
     <div class="navbar-header">  
       <a class="navbar-brand">GeoPortal</a>

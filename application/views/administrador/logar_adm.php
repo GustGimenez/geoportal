@@ -48,9 +48,10 @@
 	}
 
 	input{ 	
-		border: thin dashed red; /* borda tracejada*/
+		border: solid thin brown; /* borda tracejada*/
 		border-radius: 5px;
 		font-weight: lighter;
+		width: thin;
 	}
 
 	input:focus{
