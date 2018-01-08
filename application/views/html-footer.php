@@ -1,3 +1,4 @@
-	</body>
-	</html>
-<!-- Nossa, que página retardada. Mas a gente faz assim -->
+
+<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
+</body>
+</html>
