@@ -1,7 +1,22 @@
+<style>
+  
+  a.navbar-brand{
+    padding-right: 0px;
+  }
+
+  .imagem{
+    margin: 0px;
+    padding-top: 5px;
+  }
+
+</style>
+
 <nav class="navbar navbar-default">
 
   <div class="container-fluid">
-
+    <div class="navbar-header">
+      <img class="imagem" src="http://localhost/geoportal/imagens/icone.png">
+    </div>
     <div class="navbar-header">
       <a class="navbar-brand">GeoPortal</a>
     </div>
