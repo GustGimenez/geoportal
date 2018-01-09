@@ -3,7 +3,7 @@
 		
 	</div>
 	<div>
-		<input type="submit" name="" class="btn btn-primary">
+		<input type="submit" class="btn btn-primary">
 	</div>
 
 	<input type="hidden" name="lat" id="lat">
