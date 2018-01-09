@@ -48,18 +48,3 @@
 	<button onclick="location.href='<?php echo base_url('administrador/aprovar_colecao');?>'" type="button" class="btn btn-info" id="validar">Validar</button>
 	<button onclick="location.href='<?php echo base_url('administrador/invalidar_colecao');?>'" type="button" class="btn btn-danger" id="invalidar">Invalidar</button>
 </div>
-
-<script>
-	/*$(document).ready(function(){
-		var validarbtn = $(".btn.btn-info");
-		var invalidarbtn = $(".btn.btn-danger");
-
-		$(validarbtn).click(function(e){
-			<?php base_url('administrador/aprovar_colecao'.$this->session->userdata('colecao')); ?>
-		});
-
-		$(invalidarbtn).click(function(e){
-			<?php base_url('administrador/invalidar_colecao'.$this->session->userdata('colecao')); ?>
-		});
-	});*/
-</script>
