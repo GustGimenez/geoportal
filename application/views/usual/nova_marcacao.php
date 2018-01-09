@@ -12,13 +12,17 @@
 	<input type="hidden" name="num_atri" id="num_atri" value="0">
 </form>
 <input type="text" id="endereco" placeholder="Endereço">
-<button id="ver">Buscar</button>
+<button id="ver" class="btn-buscar">Buscar</button>
 <div id="map"></div>
 <style>
 #map {
 	width: 100%;
 	height: 590px;
 	background-color: grey;
+}
+
+.btn-buscar{
+	width: 150px;
 }
 </style>
 

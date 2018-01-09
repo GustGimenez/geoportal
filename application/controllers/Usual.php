@@ -88,6 +88,7 @@ class Usual extends CI_Controller {
 
 		$this->load->view('html-header');
 		$this->load->view('usual/menu_usual');
+		$this->load->view('usual/nova_colecao_model');
 		$this->load->view('usual/listar_colecoes',$dados);
 		$this->load->view('html-footer');
 	}
@@ -122,6 +123,7 @@ class Usual extends CI_Controller {
 
 		$this->load->view('html-header');
 		$this->load->view('usual/menu_usual');
+		$this->load->view('usual/nova_colecao_model');
 		$this->load->view("mapa_marcacoes",array("marcacoes"=>$marcacoes));
 		$this->load->view('script');
 		$this->load->view('html-footer');
@@ -133,6 +135,7 @@ class Usual extends CI_Controller {
 
 		$this->load->view('html-header');
 		$this->load->view('usual/menu_usual');
+		$this->load->view('usual/nova_colecao_model');
 		$this->load->view('usual/listar_colecoes_nova_marcacao',$dados);
 		$this->load->view('html-footer');
 	}
@@ -144,6 +147,7 @@ class Usual extends CI_Controller {
 
 		$this->load->view('html-header');
 		$this->load->view('usual/menu_usual');
+		$this->load->view('usual/nova_colecao_model');
 		$this->load->view('usual/nova_marcacao',array("atributos"=>$atributos));
 		$this->load->view('html-footer');
 	}
