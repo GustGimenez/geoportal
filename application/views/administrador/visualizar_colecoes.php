@@ -4,7 +4,7 @@
 			<th>Id</th>
 			<th>Nome</th>
 			<th>Descrição</th>
-			<th>Visualizar</th>
+			<th>Ação</th>
 		</tr>
 	</thead>
 	<tbody>
