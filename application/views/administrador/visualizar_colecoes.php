@@ -1,7 +1,7 @@
 <table class="table table-bordered">
 	<thead>
 		<tr>
-			<th>Id</th>
+			<th>Privada</th>
 			<th>Nome</th>
 			<th>Descrição</th>
 			<th>Ação</th>
@@ -11,7 +11,8 @@
 		<?php
 		foreach($colecoes as $col){
 			echo "<tr>";
-			echo "<td>".$col->col_id."</td>";
+			if($col->col_senha != null) echo "<td>Sim</td>";
+			else echo "<td>Não</td>";
 			echo "<td>".$col->col_nome."</td>";
 			echo "<td>".$col->col_descricao."</td>";
 			echo "<td>".
