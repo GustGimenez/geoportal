@@ -57,7 +57,7 @@
 	}
 
 	.personal{
-		border: thin dashed dimgray; /* borda tracejada*/
+		border: thin solid dimgray; /* borda tracejada*/
 		border-radius: 5px;
 		font-weight: lighter;
 		width: 175px;
