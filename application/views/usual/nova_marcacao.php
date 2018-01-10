@@ -61,7 +61,7 @@ $(document).ready(function(){
 			break;
 		}
 
-		$(div_atributos).append('<br><label>'+valores.atributos[i].atri_nome+'</label><br><input type='+type+' class="form-control" name='+valores.atributos[i].atri_nome+' />');
+		$(div_atributos).append('<br><label>'+valores.atributos[i].atri_nome.replace("_"," ")+'</label><br><input type='+type+' class="form-control" name='+valores.atributos[i].atri_nome+' />');
 	}
 	 document.getElementById("colecao").value = valores.colecao;
 	 document.getElementById("num_atri").value = valores.atributos.length;

@@ -17,7 +17,7 @@
 			echo "<td>".$col->col_descricao."</td>";
 			if($col->col_senha != null) {echo "<td>".anchor(base_url("usual/marcacoes_privadas_nova_marcacao/".$col->col_id),"Sugerir",array('class'=>'btn btn-info')).
 				"</td>"."</tr>";}
-			else {echo "<td>".anchor(base_url("usual/exibir_marcacoes/".$col->col_id),"Sugerir",array('class'=>'btn btn-info')).
+			else {echo "<td>".anchor(base_url("usual/criar_marcacao/".$col->col_id),"Sugerir",array('class'=>'btn btn-info')).
 				"</td>"."</tr>";}
 		}
 		?>
