@@ -48,13 +48,13 @@
 	}
 
 	input{ 	
-		border: thin dashed red; /* borda tracejada*/
+		border: thin solid red; /* borda tracejada*/
 		border-radius: 5px;
 		font-weight: lighter;
 	}
 
 	input:focus{
-		background: #FFC;
+		background: antiquewhite/*#FFC*/;
 		outline: 0 none;
 	}
 
