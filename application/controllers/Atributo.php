@@ -21,8 +21,8 @@ class Atributo extends CI_Controller{
 			$this->form_validation->set_rules('tipo'.$cont, 'Tome', 'required');
 
 			if($this->form_validation->run()){
-				$dados['atri_nome'] = $this->input->post('nome'.$cont);
-				$dados['atri_tamanho'] = $this->input->post('tamanho'.$cont);
+				$dados['atri_nome'] = str_replace(" ", "_", $this->input->post('nome'.$cont));
+				$dados['atri_tamanho'] = $this->input->post('tamanho'.$cont);	
 
 				switch($this->input->post('tipo'.$cont)){
 					case 'INT':
