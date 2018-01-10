@@ -5,7 +5,6 @@
 <table class="table table-bordered">
 	<thead>
 		<tr>
-			<th>Id</th>
 			<th>Nome</th>
 			<th>Tipo</th>
 			<th>Tamanho</th>
@@ -15,7 +14,6 @@
 		<?php
 		foreach($atributos as $atri){
 			echo "<tr>";
-			echo "<td>".$atri->atri_id."</td>";
 			echo "<td>".$atri->atri_nome."</td>";
 			switch ($atri->atri_tipo) {
 				case 0:

@@ -19,7 +19,7 @@ class Colecao extends CI_Controller{
 		if($this->form_validation->run()){
 			$dados['col_descricao'] = $this->input->post('descricao');
 			$dados['col_nome'] = $this->input->post('nome');
-			if(isset($_POST['checkbox'])){
+			if($this->input->post('privada') == 'on'){
 				$dados['col_senha'] =  md5($this->input->post('senha'));
 			}
 
@@ -56,6 +56,7 @@ class Colecao extends CI_Controller{
 		$this->load->view('html-header');
 		$this->load->view('menu_home');
 		$this->load->view('listar_colecoes',$dados);
+		$this->load->view('model_inserir_senha_colecao');
 		$this->load->view('html-footer');
 	}
 }

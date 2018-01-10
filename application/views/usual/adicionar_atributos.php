@@ -25,7 +25,7 @@
     <h1> Escolha os Atributos </h1>
 </div>
 
-<form id="atributosFomr" method="post" action="<?= base_url('atributo/adicionar_atributos/')?>">
+<form id="atributosFomr" method="post" action="<?= base_url('atributo/adicionar_atributos')?>">
 
     <div class="form-group">
         <div class="col-md-6">

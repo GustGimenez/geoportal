@@ -11,7 +11,7 @@ class Colecao_model extends CI_Model{
 	}
 
 	public function select($id){
-		$this->db->where("id_col",$id);
+		$this->db->where("col_id",$id);
 		return $this->db->get('colecao')->result();
 	}
 
