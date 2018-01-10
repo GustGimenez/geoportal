@@ -90,6 +90,7 @@ class Usual extends CI_Controller {
 		$this->load->view('usual/menu_usual');
 		$this->load->view('usual/nova_colecao_model');
 		$this->load->view('usual/listar_colecoes',$dados);
+		$this->load->view('model_inserir_senha_colecao');
 		$this->load->view('html-footer');
 	}
 
@@ -127,6 +128,31 @@ class Usual extends CI_Controller {
 		$this->load->view("mapa_marcacoes",array("marcacoes"=>$marcacoes));
 		$this->load->view('script');
 		$this->load->view('html-footer');
+	}
+
+	public function marcacoes_privadas($col_id){
+		$dados['colecao'] = $col_id;
+		$this->load->view('usual/model_inserir_senha_colecao',$dados);
+	}
+
+	public function exibir_marcacoes_privadas(){
+		$this->load->model('colecao_model','colmodel');
+		$this->load->model('atributo_model','atrimodel');
+		$this->load->model('marcacoes_model','marcmodel');
+
+		$colecao = $this->colmodel->select($this->input->post('colecao'));
+		$marcacoes['atributos'] = $this->atrimodel->listar(($this->input->post('colecao')));
+		$marcacoes['valores'] = $this->marcmodel->get_Nome('marcacao_'.$colecao[0]->col_nome);
+		$senha = md5($this->input->post('senha'));
+
+		if($senha == $colecao[0]->col_senha){
+			$this->load->view('html-header');
+			$this->load->view('usual/menu_usual');
+			$this->load->view('usual/nova_colecao_model');
+			$this->load->view("mapa_marcacoes",array("marcacoes"=>$marcacoes));
+			$this->load->view('script');
+			$this->load->view('html-footer');
+		}
 	}
 
 	public function nova_marcacao(){

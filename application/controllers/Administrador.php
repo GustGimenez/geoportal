@@ -150,4 +150,28 @@ class Administrador extends CI_Controller {
 		$this->load->view('script');
 		$this->load->view('html-footer');
 	}
+
+	public function marcacoes_privadas($col_id){
+		$dados['colecao'] = $col_id;
+		$this->load->view('administrador/model_inserir_senha_colecao',$dados);
+	}
+
+	public function exibir_marcacoes_privadas(){
+		$this->load->model('colecao_model','colmodel');
+		$this->load->model('atributo_model','atrimodel');
+		$this->load->model('marcacoes_model','marcmodel');
+
+		$colecao = $this->colmodel->select($this->input->post('colecao'));
+		$marcacoes['atributos'] = $this->atrimodel->listar(($this->input->post('colecao')));
+		$marcacoes['valores'] = $this->marcmodel->get_Nome('marcacao_'.$colecao[0]->col_nome);
+		$senha = md5($this->input->post('senha'));
+
+		if($senha == $colecao[0]->col_senha){
+			$this->load->view('html-header');
+			$this->load->view('administrador/menu_adm');
+			$this->load->view("mapa_marcacoes",array("marcacoes"=>$marcacoes));
+			$this->load->view('script');
+			$this->load->view('html-footer');
+		}
+	}
 }
