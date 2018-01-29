@@ -8,6 +8,7 @@
 	echo meta(array('name' => 'viewport', 'content' => 'width=device-width, initial-scale=1.0'));
 	?>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/estilo.css');?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css');?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css');?>">
 	<script
 	src="https://code.jquery.com/jquery-3.2.1.min.js"

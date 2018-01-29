@@ -1,82 +1,31 @@
 <style>
-	
 	body{
 		text-align: center;
-		background-image: url(../imagens/logo2.png);
-		background-position: 10px 5px;
+		background-image: url(../imagens/img_cadastro.png);
+		background-position: center; 
 	}
-
-	.form-white-background{
-		z-index: 1;
-      	padding-top: 10px;
-     	padding-left: 10px;
-     	padding-right: 10px;
-      	padding-bottom: 20px;
-      	width: 30%;
-      	height: 100%;
-      	background: white;
-      	font-weight: bold;
-      	border-color: silver;
-      	border-style: solid;
-      	border-width: 2px;
-	}
-
-	.form-register{
-		padding-bottom: 5px;
-	    padding-top: 150px;
-    	width: 200%;
-    	height: 150%;
-	    display: flex;
-    	flex-direction: row;
-    	justify-content: center;
-    	align-items: center;
-	}
-
-	a{
-		color: gray;
-	}
-
-	a:hover{
-		color: red;
-		text-decoration-color: red;
-	}
-
-	.botao{
-		width: 75px;
-		height: 35px;
-		border-radius: 10px 0px 10px 0px;
-		padding: 5px;
-		border: 0;
-		display: inline-block;
-		background-color: limegreen;
-		color: white;
-	}
-
-	.botao:hover{
-		background-color:  lime;
-	}
-
-	.personal{
-		border: thin solid dimgray; /* borda tracejada*/
-		border-radius: 5px;
-		font-weight: lighter;
-		width: 175px;
-	}
-
-	.personal:focus{
-		background: #FFC;
-		outline: 0 none;
-	}
-
 </style>
 
 
-<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/estilo-registro.css') ?>">
+<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/estilo-cadastro-adm.css') ?>">
 <div class="main-content">
 	<form class="form-register" method="post" action="<?=base_url('administrador/cadastrar')?>">
 			<div class="form-white-background">
 				<div class="form-title-row">
 					<h1>Tornar-se <b>Administrador</b></h1>
+					<div class="alinhado-centro borda-base espaco-vertical">
+						<?php 
+						if($this->session->flashdata('sucesso')){?>
+							<div class="alert alert-success">
+								<?= $this->session->flashdata('sucesso') ?>
+							</div>
+				  <?php } 
+				  		if($this->session->flashdata('fracasso')){?>
+				  			<div class="alert alert-danger">
+				  				<?= $this->session->flashdata('fracasso') ?>
+				  			</div>
+				  <?php } ?>	
+					</div>
 				</div>
 				<div class="form-row">
 					<label>
@@ -99,7 +48,7 @@
 				<br>
 				<div class="form-row">
 					<label class="form-checkbox">
-						<input type="checkbox" name="checkbox">
+						<input type="checkbox" name="checkbox" id="checkbox">
 						<span>Eu aceito os <a href="#">termos e condições</a></span>
 					</label>
 				</div>
