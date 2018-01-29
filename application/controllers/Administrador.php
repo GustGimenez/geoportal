@@ -57,7 +57,7 @@ class Administrador extends CI_Controller {
 
 		$result = $this->modeladm->logar($dados);
 		if(count($result) == 0){
-			echo "<script>alert('Email ou senha inválido')</script>";
+			$this->session->set_flashdata('fracasso',"Erro no login!");
 			redirect(base_url('administrador/login_area'));
 		}
 		else{
