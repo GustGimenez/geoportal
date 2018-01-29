@@ -4,7 +4,7 @@ href="<?= base_url('assets/css/estilo-cadastro-usual.css') ?>">
 <style>
 body{
 	text-align: center;
-	background-image: url(../imagens/img_cadastro_usual.png);
+	background-image: url(../imagens/img_cadastro.png);
 	background-position: center;
 }
 </style>
@@ -53,7 +53,7 @@ body{
 					<br>
 					<label class="form-checkbox">
 						<br>
-						<input type="checkbox" name="checkbox">
+						<input type="checkbox" name="checkbox" id="checkbox">
 						<span>Eu aceito os <a href="#">termos e condições</a></span>
 					</label>
 				</div>

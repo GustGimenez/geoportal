@@ -21,6 +21,11 @@ class Usual extends CI_Controller {
 		$this->form_validation->set_rules('senha','Senha','required');
 		$this->form_validation->set_rules('email','E-mail','required|valid_email|is_unique[usual.usual_email]');
 
+		if($this->input->post('checkbox') != 'on'){
+			$this->session->set_flashdata('fracasso',"Concorde com os termos!");
+			redirect(base_url('administrador/novo_adm'));
+		}
+
 		if($this->form_validation->run()){
 			$dados['usual_email'] = $this->input->post('email');
 			$dados['usual_senha'] = md5($this->input->post('senha'));
@@ -31,7 +36,9 @@ class Usual extends CI_Controller {
 			else
 				$this->session->set_flashdata('fracasso',"Erro ao cadastrar!");
 		}
-		$this->session->set_flashdata('fracasso',"Erro ao cadastrar!");
+		else
+			$this->session->set_flashdata('fracasso',"Erro ao cadastrar!");
+
 		redirect(base_url('usual/novo_usual'));
 	}
 
