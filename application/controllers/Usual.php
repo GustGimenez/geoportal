@@ -26,9 +26,13 @@ class Usual extends CI_Controller {
 			$dados['usual_senha'] = md5($this->input->post('senha'));
 			$dados['usual_nome'] = $this->input->post('nome');
 			
-			$this->modelusual->inserir($dados);
-			redirect(base_url('usual/novo_usual'));
+			if($this->modelusual->inserir($dados))
+				$this->session->set_flashdata('sucesso',"Usuário cadastrado!");
+			else
+				$this->session->set_flashdata('fracasso',"Erro ao cadastrar!");
 		}
+		$this->session->set_flashdata('fracasso',"Erro ao cadastrar!");
+		redirect(base_url('usual/novo_usual'));
 	}
 
 	function login_area(){
