@@ -21,14 +21,25 @@ class Usual extends CI_Controller {
 		$this->form_validation->set_rules('senha','Senha','required');
 		$this->form_validation->set_rules('email','E-mail','required|valid_email|is_unique[usual.usual_email]');
 
+		if($this->input->post('checkbox') != 'on'){
+			$this->session->set_flashdata('fracasso',"Concorde com os termos!");
+			redirect(base_url('administrador/novo_adm'));
+		}
+
 		if($this->form_validation->run()){
 			$dados['usual_email'] = $this->input->post('email');
 			$dados['usual_senha'] = md5($this->input->post('senha'));
 			$dados['usual_nome'] = $this->input->post('nome');
 			
-			$this->modelusual->inserir($dados);
-			redirect(base_url('usual/novo_usual'));
+			if($this->modelusual->inserir($dados))
+				$this->session->set_flashdata('sucesso',"Usuário cadastrado!");
+			else
+				$this->session->set_flashdata('fracasso',"Erro ao cadastrar!");
 		}
+		else
+			$this->session->set_flashdata('fracasso',"Erro ao cadastrar!");
+
+		redirect(base_url('usual/novo_usual'));
 	}
 
 	function login_area(){
@@ -45,7 +56,7 @@ class Usual extends CI_Controller {
 		$result = $this->modelusual->logar($dados);
 
 		if(count($result) == 0){
-			echo "<script>alert('Usuário ou senha inválido')</script>";
+			$this->session->set_flashdata('fracasso',"Erro no login!");
 			redirect(base_url('usual/login_area'));
 		}
 		else{

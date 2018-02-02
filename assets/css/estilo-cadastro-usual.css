@@ -1,0 +1,76 @@
+.form-register{
+	padding-bottom: 5px;
+	padding-top: 5%;
+	width: 200%;
+	height: 125%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: right;
+}
+
+.caixinha{
+	z-index: 1;
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 20px;
+	width: 30%;
+	height: 100%;
+	background: white;
+	font-weight: bold;
+	border-color: silver;
+	border-style: solid;
+	border-width: 2px;
+}
+
+.botao{
+	width: 75px;
+	height: 35px;
+	border-radius: 10px 0px 10px 0px;
+	padding: 5px;
+	border: 0;
+	display: inline-block;
+	background-color: limegreen;
+	color: white;
+}
+
+.botao:hover{
+	background-color:  lime;
+}
+
+.personal{
+	border: thin solid dimgray; /* borda tracejada*/
+	border-radius: 5px;
+	font-weight: lighter;
+	width: 175px;
+}	
+
+.personal:focus{
+	background: #FFC;
+	outline: 0 none;
+}
+
+h2{
+	text-align: right;
+	font-size: 50px;
+	color: gray;
+}
+
+a{
+	color: gray;
+}
+
+a:hover{
+	color: red;
+	text-decoration-color: red;
+}
+
+.form-register{
+	max-width: 1000px;
+	width: 100%;
+	margin: 0 auto;
+
+	font: bold 14px sans-serif;
+	text-align: center;
+}

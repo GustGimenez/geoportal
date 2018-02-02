@@ -23,15 +23,25 @@ class Administrador extends CI_Controller {
 		$this->form_validation->set_rules('email','E-mail',
 			'required|valid_email|is_unique[administrador.adm_email]');
 
+		if($this->input->post('checkbox') != 'on'){
+			$this->session->set_flashdata('fracasso',"Concorde com os termos!");
+			redirect(base_url('administrador/novo_adm'));
+		}
+
 		if($this->form_validation->run()){
 			$dados['adm_email'] = $this->input->post('email');
 			$dados['adm_senha'] = md5($this->input->post('senha'));
 			$dados['adm_nome'] = $this->input->post('nome');
 			
-			$this->modeladm->inserir($dados);
-			redirect(base_url('administrador/novo_adm'));
+			if($this->modeladm->inserir($dados))
+				$this->session->set_flashdata('sucesso',"Administrador cadastrado!");
+			else
+				$this->session->set_flashdata('fracasso',"Erro ao cadastrar!");
+			
 		}
-
+		else
+			$this->session->set_flashdata('fracasso',"Erro ao cadastrar!");
+		redirect(base_url('administrador/novo_adm'));
 	}
 
 	function login_area(){
@@ -47,7 +57,7 @@ class Administrador extends CI_Controller {
 
 		$result = $this->modeladm->logar($dados);
 		if(count($result) == 0){
-			echo "<script>alert('Email ou senha inválido')</script>";
+			$this->session->set_flashdata('fracasso',"Erro no login!");
 			redirect(base_url('administrador/login_area'));
 		}
 		else{
