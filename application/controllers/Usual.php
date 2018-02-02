@@ -56,7 +56,7 @@ class Usual extends CI_Controller {
 		$result = $this->modelusual->logar($dados);
 
 		if(count($result) == 0){
-			echo "<script>alert('Usuário ou senha inválido')</script>";
+			$this->session->set_flashdata('fracasso',"Erro no login!");
 			redirect(base_url('usual/login_area'));
 		}
 		else{

@@ -33,7 +33,7 @@ body{
 					<input type="password" name="senha" id="senha">
 				</label>
 			</div>
-			<br><br>
+			<br>
 			<div class="form-row">
 				<button class="botao" type="submit">Entrar</button>
 			</div>
