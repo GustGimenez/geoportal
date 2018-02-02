@@ -3,87 +3,9 @@ body{
 	background-image: url(../imagens/google-maps.jpg);
 	text-align: center;
 }
-
-.form-white-background{
-	z-index: 1;
-	padding-top: 20px;
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-bottom: 20px;
-	width: 30%;
-	height: 100%;
-	background: white;
-	font-weight: bold;
-	border-color: silver;
-	border-style: solid;
-	border-width: 2px;
-}
-
-.form-register{
-	padding-bottom: 5px;
-	padding-top: 5%;
-	width: 200%;
-	height: 125%;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: right;
-}
-
-.form-login{
-	padding-bottom: 5px;
-	padding-top: 150px;
-	width: 200%;
-	height: 125%;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-}
-
-.botao{
-	width: 75px;
-	height: 35px;
-	border-radius: 10px 0px 10px 0px;
-	padding: 5px;
-	border: 0;
-	display: inline-block;
-	background-color: limegreen;
-	color: white;
-}
-
-.botao:hover{
-	color: white;
-	background-color: lime;
-	border-radius: 10px 0px 10px 0px;
-}
-
-input{ 	
-	border: thin solid red; /* borda tracejada*/
-	border-radius: 5px;
-	font-weight: lighter;
-}
-
-input:focus{
-	background: antiquewhite/*#FFC*/;
-	outline: 0 none;
-}
-
-.main-content{
-	height: 45%;	
-}
-
-a{
-	color:black;
-}
-
-a:hover{
-	color: red;
-	text-decoration-color: red;
-}
 </style>
 
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/estilo-logar.css') ?>">
+<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/estilo-login-usual.css') ?>">
 
 <div class="main-content">
 	<form class="form-login" method="post" action="<?= base_url('usual/logar')?>">
