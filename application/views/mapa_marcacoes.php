@@ -24,7 +24,7 @@
 
             var conteudo = '';
             for(var cont = 0; cont < results.atributos.length; cont++){
-                conteudo += results.atributos[cont].atri_nome + ": " + 
+                conteudo += results.atributos[cont].atri_nome.replace("_"," ") + ": " + 
                             results.valores[i][results.atributos[cont].atri_nome] + "<br>";
             }
 

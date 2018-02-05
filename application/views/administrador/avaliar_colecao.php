@@ -14,7 +14,7 @@
 		<?php
 		foreach($atributos as $atri){
 			echo "<tr>";
-			echo "<td>".$atri->atri_nome."</td>";
+			echo "<td>".str_replace('_', ' ', $atri->atri_nome)."</td>";
 			switch ($atri->atri_tipo) {
 				case 0:
 				echo "<td>"."INT"."</td>";

@@ -13,7 +13,7 @@
 			echo "<tr>";
 			if($col->col_senha != null) echo "<td>Sim</td>";
 			else echo "<td>Não</td>";
-			echo "<td>".$col->col_nome."</td>";
+			echo "<td>".str_replace('_', ' ', $col->col_nome)."</td>";
 			echo "<td>".$col->col_descricao."</td>";
 			if($col->col_senha != null) {echo "<td>".anchor(base_url("administrador/marcacoes_privadas/".$col->col_id),"Visualizar",array('class'=>'btn btn-info')).
 				"</td>"."</tr>";}

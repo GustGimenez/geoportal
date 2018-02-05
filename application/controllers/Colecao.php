@@ -18,7 +18,7 @@ class Colecao extends CI_Controller{
 
 		if($this->form_validation->run()){
 			$dados['col_descricao'] = $this->input->post('descricao');
-			$dados['col_nome'] = $this->input->post('nome');
+			$dados['col_nome'] = str_replace(' ', '_', $this->input->post('nome'));
 			if($this->input->post('privada') == 'on'){
 				$dados['col_senha'] =  md5($this->input->post('senha'));
 			}
