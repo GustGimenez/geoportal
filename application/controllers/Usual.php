@@ -191,23 +191,37 @@ class Usual extends CI_Controller {
 
 	public function marcacoes_privadas_nova_marcacao($col_id){
 		$dados['colecao'] = $col_id;
-		$this->load->view('usual/model_inserir_senha_colecao_marcacao',$dados);
+
+		$this->load->view('html-header');
+		$this->load->view('usual/menu_usual');
+		$this->load->view('usual/nova_colecao_model');
+		$this->load->view('usual/inserir_senha_colecao_marcacao',$dados);
+		$this->load->view('html-footer');
 	}
 
-	public function criar_marcacao_modal(){
+	public function criar_marcacao_privada(){
 		$this->load->model('colecao_model','colmodel');
 		$this->load->model('atributo_model','atrimodel');
 
 		$colecao = $this->colmodel->select($this->input->post('colecao'));
 		$atributos['atributos'] = $this->atrimodel->listar($this->input->post('colecao'));
 		$atributos['colecao'] = $this->input->post('colecao');
-		$senha = md5($this->input->post('senha'));
+		$senha = md5($this->input->post('senha_col'));
 
 		if($senha == $colecao[0]->col_senha){
 			$this->load->view('html-header');
 			$this->load->view('usual/menu_usual');
 			$this->load->view('usual/nova_colecao_model');
 			$this->load->view('usual/nova_marcacao',array("atributos"=>$atributos));
+			$this->load->view('html-footer');
+		}
+		else{
+			$this->session->set_flashdata('fracasso','Senha incorreta!');
+			$dados['colecao'] = $this->input->post('colecao');
+			$this->load->view('html-header');
+			$this->load->view('usual/menu_usual');
+			$this->load->view('usual/nova_colecao_model');
+			$this->load->view('usual/inserir_senha_colecao_marcacao',$dados);
 			$this->load->view('html-footer');
 		}
 	}
