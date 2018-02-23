@@ -1,6 +1,6 @@
 <style>
 body{
-	background-image: url(../imagens/google-maps.jpg);
+	background-image: url('../imagens/google-maps.jpg');
 	text-align: center;
 }
 </style>

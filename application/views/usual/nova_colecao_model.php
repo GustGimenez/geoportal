@@ -87,7 +87,6 @@
 
 </style>
 
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/estilo-modal.css') ?>">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 
 <div id='modalColecao' class='modal'>
