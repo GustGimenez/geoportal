@@ -1,0 +1,19 @@
+.my_button_plus{
+    background-color: white;
+    display: inline-block;
+    border-radius: 8px;
+    border-color: #484A4C;
+    height: 32px;
+}
+.my_button_minus{
+    background-color: white;
+    display: inline-block;
+    border-radius: 8px;
+    border-color: #484A4C;
+    height: 32px;
+}
+
+h1{
+    text-align: center;
+    size: 20px;
+}

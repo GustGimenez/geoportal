@@ -1,71 +1,81 @@
-<form action="<?= base_url('usual/adicionar_marcacao') ?>" method="post">
-	<div id="div_atributos">
-		
-	</div>
-	<div>
-		<input type="submit" class="btn btn-primary">
-	</div>
+<link rel="stylesheet" type="text/css" 
+href="<?=base_url('assets/css/nova-marcacao.css');?>">
 
-	<input type="hidden" name="lat" id="lat">
-	<input type="hidden" name="long" id="long">
-	<input type="hidden" name="colecao" id="colecao" value="0">
-	<input type="hidden" name="num_atri" id="num_atri" value="0">
-</form>
-<input type="text" id="endereco" placeholder="Endereço">
-<button id="ver" class="btn-buscar">Buscar</button>
-<div id="map"></div>
-<style>
-#map {
-	width: 100%;
-	height: 590px;
-	background-color: grey;
-}
-
-.btn-buscar{
-	width: 150px;
+<style>	
+body{
+	background-image: url("<?=base_url('imagens/google-maps.jpg') ?>");
 }
 </style>
 
+<div class="box">
+	<div class="esquerda">
+		<form class="form-nova_marcacao" action="<?= base_url('usual/adicionar_marcacao') ?>" method="post">
+			<div id="div_atributos">
+				<h2 align="center">Informe os Valores</h2>
+			</div>
+			<div class="botao">
+				<br>
+				<input type="submit" class="btn btn-primary" align="center">
+			</div>
+
+			<input type="hidden" name="lat" id="lat">
+			<input type="hidden" name="long" id="long">
+			<input type="hidden" name="colecao" id="colecao" value="0">
+			<input type="hidden" name="num_atri" id="num_atri" value="0">
+		</form>
+	</div>
+
+	
+	<div class="direita div-nova_marcacao_map">
+		<h2 align="center">Informe o Local</h2>
+		<div>
+			<input type="text" class="endereco" id="endereco" placeholder="Endereço">
+			<button id="ver" class="busca">Buscar</button>
+		</div>
+		<div class="map" id="map"></div>
+	</div>
+</div>
+
 <script>
 
-$(document).ready(function(){
-	var valores = JSON.parse('<?=json_encode($atributos)?>');
-	var div_atributos = document.getElementById("div_atributos");
-	var i;
-	for(i = 0; i < valores.atributos.length; i++){
-		var tipo;
-		var type;
-		switch (valores.atributos[i].atri_tipo) {
-			case 0:
-			tipo = 'INT';
-			type = '"number"';
-			break;
+	$(document).ready(function(){
+		var valores = JSON.parse('<?=json_encode($atributos)?>');
+		var div_atributos = document.getElementById("div_atributos");
+		var i;
+		for(i = 0; i < valores.atributos.length; i++){
+			var tipo;
+			var type;
+			switch (valores.atributos[i].atri_tipo) {
+				case 0:
+				tipo = 'INT';
+				type = '"number"';
+				break;
 
-			case 1:
-			tipo = 'VARCHAR[ ]';
-			type = '"text"';
-			break;
+				case 1:
+				tipo = 'VARCHAR[ ]';
+				type = '"text"';
+				break;
 
-			case 2:
-			tipo = 'BOOLEAN';
-			type = '"text"';
-			break;
+				case 2:
+				tipo = 'BOOLEAN';
+				type = '"text"';
+				break;
 
-			case 3:
-			tipo = 'FLOAT';
-			type = '"number"';
-			break;
+				case 3:
+				tipo = 'FLOAT';
+				type = '"number"';
+				break;
 
-			case 4:
-			tipo = 'BLOB';
-			break;
+				case 4:
+				tipo = 'BLOB';
+				break;
+			}
+
+			$(div_atributos).append('<br><label>'+valores.atributos[i].atri_nome.replace("_"," ")+'</label><br><input type='+type+' class="atributo" name='+valores.atributos[i].atri_nome+' />');
 		}
-
-		$(div_atributos).append('<br><label>'+valores.atributos[i].atri_nome.replace("_"," ")+'</label><br><input type='+type+' class="form-control" name='+valores.atributos[i].atri_nome+' />');
-	}
-	 document.getElementById("colecao").value = valores.colecao;
-	 document.getElementById("num_atri").value = valores.atributos.length;
-});
+		document.getElementById("colecao").value = valores.colecao;
+		document.getElementById("num_atri").value = valores.atributos.length;
+	});
 	
 	var marker;
 	function initMap() {
@@ -138,6 +148,4 @@ function getCoords(lat, lng) {
 </script>
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCICU1zIV5CiGivUz3fkzxGUuK6W-2G04c&callback=initMap">
-
-
 </script>
