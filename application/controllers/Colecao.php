@@ -24,15 +24,15 @@ class Colecao extends CI_Controller{
 			}
 
 			$dados['sugestor_id'] = $this->session->userdata('id');
-			// $this->colemodel->inserir($dados);
-			// $aux = $this->colemodel->getColecao($dados['col_nome']);
+			$this->colemodel->inserir($dados);
+			$aux = $this->colemodel->getColecao($dados['col_nome']);
 
 			$newdata = array(
 				'id' => $this->session->userdata('id'),
 				'nome' => $this->session->userdata('nome'),
 				'email' => $this->session->userdata('email'),
 				'logado' => TRUE
-				//'colecao' => $aux[0]['col_id']
+				'colecao' => $aux[0]['col_id']
 			);
 
 			$this->session->set_userdata($newdata);
