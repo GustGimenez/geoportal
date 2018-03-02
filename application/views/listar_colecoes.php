@@ -1,3 +1,24 @@
+<style>
+div.busca{
+	margin-bottom: 15px;
+	margin-top: 15px;
+	text-align: center;
+}
+
+#busca_col_nome{
+	height: 34px;
+	width: 190px;
+}
+</style>
+
+<div class="busca">
+	<form method="post" action="<?= base_url('colecao/listar_colecoes_busca') ?>">
+		<input type="text" name="busca_col_nome" id="busca_col_nome" placeholder="Busca por Nome"><br><br>
+		<button type="submit" class="btn btn-info">Buscar</button>
+		<a href="<?= base_url('colecao/listar_colecoes') ?>" class="btn btn-info">Remover Filtro</a>
+	</form>
+</div>
+
 <table class="table table-bordered">
 	<thead>
 		<tr>
@@ -13,7 +34,7 @@
 			echo "<tr>";
 			if($col->col_senha != null) echo "<td>Sim</td>";
 			else echo "<td>Não</td>";
-			echo "<td>".$col->col_nome."</td>";
+			echo "<td>".str_replace('_', ' ', $col->col_nome)."</td>";
 			echo "<td>".$col->col_descricao."</td>";
 			if($col->col_senha != null) {echo "<td>".anchor(base_url("marcacao/marcacoes_privadas/".$col->col_id),"Visualizar",array('class'=>'btn btn-info')).
 				"</td>"."</tr>";}

@@ -145,6 +145,30 @@ class Administrador extends CI_Controller {
 		$this->load->view('html-footer');
 	}
 
+	function listar_colecoes_com_filtro(){
+		$this->load->model('colecao_model','modelcol');
+		$dados['colecoes'] = $this->modelcol->listar_aprovadas();
+
+		$busca = $this->input->post('busca_col_nome');
+		$cols = $this->modelcol->listar_aprovadas();
+		$cols_resultantes = array();
+		$i = 0;
+
+		foreach ($cols as $col) {
+			similar_text($col->col_nome, $busca, $percent);
+			if($percent > 40){
+				$cols_resultantes[$i] = $col;
+				$i++;
+			}
+		}
+		$dados['colecoes'] = $cols_resultantes;
+
+		$this->load->view('html-header');
+		$this->load->view('administrador/menu_adm');
+		$this->load->view('administrador/visualizar_colecoes',$dados);
+		$this->load->view('html-footer');
+	}
+
 	public function exibir_marcacoes($col_id){
 		$this->load->model('colecao_model','colmodel');
 		$this->load->model('atributo_model','atrimodel');

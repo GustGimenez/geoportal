@@ -105,6 +105,31 @@ class Usual extends CI_Controller {
 		$this->load->view('html-footer');
 	}
 
+	public function listar_colecoes_busca(){
+		$this->load->model('colecao_model','colemodel');
+
+		$busca = $this->input->post('busca_col_nome');
+		$cols = $this->colemodel->listar_aprovadas();
+		$cols_resultantes = array();
+		$i = 0;
+
+		foreach ($cols as $col) {
+			similar_text($col->col_nome, $busca, $percent);
+			if($percent > 40){
+				$cols_resultantes[$i] = $col;
+				$i++;
+			}
+		}
+		$dados['colecoes'] = $cols_resultantes;
+
+		$this->load->view('html-header');
+		$this->load->view('usual/menu_usual');
+		$this->load->view('usual/nova_colecao_model');
+		$this->load->view('usual/listar_colecoes',$dados);
+		$this->load->view('model_inserir_senha_colecao');
+		$this->load->view('html-footer');
+	}
+
 	public function adicionar_marcacao(){
 		$this->load->model('colecao_model','colmodel');
 		$this->load->model('atributo_model','atrimodel');
@@ -169,6 +194,31 @@ class Usual extends CI_Controller {
 	public function nova_marcacao(){
 		$this->load->model('colecao_model','modelcol');
 		$dados['colecoes'] = $this->modelcol->listar_aprovadas();
+
+		$this->load->view('html-header');
+		$this->load->view('usual/menu_usual');
+		$this->load->view('usual/nova_colecao_model');
+		$this->load->view('usual/listar_colecoes_nova_marcacao',$dados);
+		$this->load->view('html-footer');
+	}
+
+	public function nova_marcacao_com_filtro(){
+		$this->load->model('colecao_model','colemodel');
+		$dados['colecoes'] = $this->colemodel->listar_aprovadas();
+
+		$busca = $this->input->post('busca_col_nome');
+		$cols = $this->colemodel->listar_aprovadas();
+		$cols_resultantes = array();
+		$i = 0;
+
+		foreach ($cols as $col) {
+			similar_text($col->col_nome, $busca, $percent);
+			if($percent > 40){
+				$cols_resultantes[$i] = $col;
+				$i++;
+			}
+		}
+		$dados['colecoes'] = $cols_resultantes;
 
 		$this->load->view('html-header');
 		$this->load->view('usual/menu_usual');

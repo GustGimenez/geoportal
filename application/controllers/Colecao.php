@@ -14,13 +14,13 @@ class Colecao extends CI_Controller{
 
 		$this->form_validation->set_rules('nome','Nome','required|is_unique[colecao.col_nome]');
 		$this->form_validation->set_rules('descricao','Descricao','required');
-		$this->form_validation->set_rules('senha','Senha');
+		$this->form_validation->set_rules('senha_col','Senha');
 
 		if($this->form_validation->run()){
 			$dados['col_descricao'] = $this->input->post('descricao');
 			$dados['col_nome'] = str_replace(' ', '_', $this->input->post('nome'));
 			if($this->input->post('privada') == 'on'){
-				$dados['col_senha'] =  md5($this->input->post('senha'));
+				$dados['col_senha'] =  md5($this->input->post('senha_col'));
 			}
 
 			$dados['sugestor_id'] = $this->session->userdata('id');
@@ -31,7 +31,7 @@ class Colecao extends CI_Controller{
 				'id' => $this->session->userdata('id'),
 				'nome' => $this->session->userdata('nome'),
 				'email' => $this->session->userdata('email'),
-				'logado' => TRUE
+				'logado' => TRUE,
 				'colecao' => $aux[0]['col_id']
 			);
 
@@ -53,6 +53,28 @@ class Colecao extends CI_Controller{
 	function listar_colecoes(){
 		$dados['colecoes'] = $this->colemodel->listar_aprovadas();
 
+		$this->load->view('html-header');
+		$this->load->view('menu_home');
+		$this->load->view('listar_colecoes',$dados);
+		$this->load->view('model_inserir_senha_colecao');
+		$this->load->view('html-footer');
+	}
+
+	function listar_colecoes_busca(){
+		$busca = $this->input->post('busca_col_nome');
+		$cols = $this->colemodel->listar_aprovadas();
+		$cols_resultantes = array();
+		$i = 0;
+
+		foreach ($cols as $col) {
+			similar_text($col->col_nome, $busca, $percent);
+			if($percent > 40){
+				$cols_resultantes[$i] = $col;
+				$i++;
+			}
+		}
+		$dados['colecoes'] = $cols_resultantes;
+		
 		$this->load->view('html-header');
 		$this->load->view('menu_home');
 		$this->load->view('listar_colecoes',$dados);

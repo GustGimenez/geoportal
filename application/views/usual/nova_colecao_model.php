@@ -17,7 +17,7 @@
                 </label>
             </div>
             <label class="fonte"><b>Senha</b></label></br>
-            <input class="atributosColacao" type="password" name="senha" id="senha" disabled="true">
+            <input class="atributosColacao" type="password" name="senha_col" id="senha_col" disabled="true">
         </div>
 
         <div class="botoes">
@@ -29,7 +29,7 @@
 </div>
 <script>
     function mudar_senha(checkbox){
-        if(checkbox.checked) document.getElementById("senha").disabled = false;
-        else document.getElementById("senha").disabled = true;
+        if(checkbox.checked) document.getElementById("senha_col").disabled = false;
+        else document.getElementById("senha_col").disabled = true;
     }
 </script>

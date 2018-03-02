@@ -62,7 +62,7 @@ div.titulo{
     box-sizing: border-box;
 }
 
-#senha{
+#senha_col{
     width: 96%;
     border-radius: 5px;
     border: 1px solid #ccc;

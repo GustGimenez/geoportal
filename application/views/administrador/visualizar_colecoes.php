@@ -1,3 +1,24 @@
+<style>
+div.busca{
+	margin-bottom: 15px;
+	margin-top: 15px;
+	text-align: center;
+}
+
+#busca_col_nome{
+	height: 34px;
+	width: 190px;
+}
+</style>
+
+<div class="busca">
+	<form method="post" action="<?= base_url('administrador/listar_colecoes_com_filtro') ?>">
+		<input type="text" name="busca_col_nome" id="busca_col_nome" placeholder="Busca por Nome"><br><br>
+		<button type="submit" class="btn btn-info">Buscar</button>
+		<a href="<?= base_url('administrador/listar_colecoes') ?>" class="btn btn-info">Remover Filtro</a>
+	</form>
+</div>
+
 <table class="table table-bordered">
 	<thead>
 		<tr>
